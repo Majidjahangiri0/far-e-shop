@@ -1,0 +1,23 @@
+.product-show {
+  padding: 60px 0;
+}
+
+.product-show .product-img {
+  position: relative;
+  overflow: hidden;
+  width: 70%;
+}
+
+.product-show .product-img img {
+  width: 100%;
+  transition: 0.3s ease;
+}
+
+.product-show .product-content {
+  position: relative;
+}
+
+.product-show .product-content .product-info {
+  display: flex;
+  flex-direction: column;
+}

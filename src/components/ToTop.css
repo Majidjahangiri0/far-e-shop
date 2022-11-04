@@ -1,0 +1,29 @@
+.scrollup {
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  z-index: 1000;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  background: transparent;
+  opacity: 0;
+transition: .3s ease;
+}
+.scrollup i {
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  background: #222;
+  border-radius: 50%;
+  font-size: 18px;
+  transition: all 500ms ease;
+  color: var(--color-white);
+}
+.scrollup i:hover {
+  background: var(--color-orange);
+}
+
+.active {
+  opacity: 1;
+}
