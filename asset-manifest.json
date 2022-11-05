@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/far-e-shop/static/css/main.c3965957.css",
-    "main.js": "/far-e-shop/static/js/main.cb57e1fc.js",
+    "main.js": "/far-e-shop/static/js/main.9d800452.js",
     "static/media/slider-image.jpg": "/far-e-shop/static/media/slider-image.a74f7333148866c63576.jpg",
     "static/media/p14.jpg": "/far-e-shop/static/media/p14.415a2c5d9c5aaf2c04e9.jpg",
     "static/media/p8.jpg": "/far-e-shop/static/media/p8.087c91bcdc4b222db766.jpg",
@@ -25,10 +25,10 @@
     "static/media/shop-list1.jpg": "/far-e-shop/static/media/shop-list1.19dd645f0b291b982f38.jpg",
     "index.html": "/far-e-shop/index.html",
     "main.c3965957.css.map": "/far-e-shop/static/css/main.c3965957.css.map",
-    "main.cb57e1fc.js.map": "/far-e-shop/static/js/main.cb57e1fc.js.map"
+    "main.9d800452.js.map": "/far-e-shop/static/js/main.9d800452.js.map"
   },
   "entrypoints": [
     "static/css/main.c3965957.css",
-    "static/js/main.cb57e1fc.js"
+    "static/js/main.9d800452.js"
   ]
 }
