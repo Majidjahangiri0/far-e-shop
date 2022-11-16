@@ -6,28 +6,12 @@ import { useGlobalContext } from '../context/productContext'
 import './Checkout.css'
 import { checkoutSchema } from '../validation/checkoutValidate'
 
+// مشکل: فرم ما باتن سابمیت نداره که توی فرمیک انسابمیت کنه
+// مشکل: میخوام وقتی روی باتن نهایی کردن کلیک شد محصولاتی که اومدن از موجودیشون کم بشه
+// مشکل: رفرش میکنم سبد خرید خالی میشه
+
 const Checkout = () => {
   const { cartForCheckout } = useGlobalContext()
-
-  // const [product, setProduct] = useState()
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const { data: productData } = await axios.get('http://localhost:9001/pruductData/0')
-  //       setProduct(productData)
-  //     } catch (err) {
-  //       console.log(err.message)
-  //     }
-  //   }
-  //   fetchData()
-  // }, [])
-
-  // console.log(cartForCheckout.cartItems[0])
-
-  // let updatedP = {...cartForCheckout.cartItems[0]}
-
-  // console.log(updatedP.size);
 
   const formik = useFormik({
     initialValues: { firstname: '', lastname: '', phone: null, email: '', state: '', city: '', address: '', post: null },

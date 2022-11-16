@@ -6,7 +6,7 @@ import ShoppingList from './ShoppingList'
 
 import { FaShoppingBag } from 'react-icons/fa'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 import { useGlobalContext } from '../context/productContext'
 
@@ -17,14 +17,11 @@ const Header = () => {
   const [showResNavbar, setShowResNavbar] = useState(false)
   const [showCart, setShowCart] = useState(false)
 
+  const location = useLocation()
+
   const cartBtnHandler = () => {
     setShowCart(false)
     setCartForCheckout({ ...cartForCheckout, total: totalAmount, cartItems: cartItems })
-  }
-
-  const submitHandler = (e) => {
-    e.preventDefault()
-    setShowSearchInput((prev) => !prev)
   }
 
   const numberOfItemInCart = cartItems.reduce((a, b) => a + b.qty, 0)
@@ -46,12 +43,16 @@ const Header = () => {
                   </div>
                 </Link>
                 <div className="middle-inner-res-left">
-                  <form onSubmit={submitHandler} className={`search-bar-res ${showSearchInput ? 'active' : ''}`}>
-                    <input type="text" placeholder="جستجو کنید..." onChange={searchProduct} />
-                    <button type="submit">
-                      <i className="fa fa-search"></i>
-                    </button>
-                  </form>
+                  {location.pathname === '/' ? (
+                    <div className="d-flex mx-1" dir="ltr">
+                      <button className="search-btn" onClick={() => setShowSearchInput((prev) => !prev)}>
+                        <i className="fa fa-search"></i>
+                      </button>
+                      <form className={`search-bar-res ${showSearchInput ? 'active' : ''}`} dir="rtl">
+                        <input type="text" placeholder="جستجو کنید..." onChange={searchProduct} />
+                      </form>
+                    </div>
+                  ) : null}
                   <button className="res-navbar-btn" onClick={() => setShowResNavbar((prev) => !prev)}>
                     <i className={`${showResNavbar ? 'fa fa-times' : 'fa fa-bars'}`} />
                   </button>
@@ -59,14 +60,16 @@ const Header = () => {
               </div>
             </div>
             <div className="col-12 col-lg-8 col-md-7">
-              <div className="search-bar">
-                <form>
-                  <input type="text" placeholder="کالای مورد نظر خود را جستجو کنید..." onChange={searchProduct} />
-                  <button disabled={true}>
-                    <i className="fa fa-search" />
-                  </button>
-                </form>
-              </div>
+              {location.pathname === '/' ? (
+                <div className="search-bar">
+                  <form>
+                    <input type="text" placeholder="کالای مورد نظر خود را جستجو کنید..." onChange={searchProduct} />
+                    <button disabled={true}>
+                      <i className="fa fa-search" />
+                    </button>
+                  </form>
+                </div>
+              ) : null}
             </div>
             <div className="col-12 col-lg-2 col-md-3">
               <div className="bag-shopping" onClick={() => setShowCart(true)}>

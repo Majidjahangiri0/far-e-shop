@@ -1,16 +1,11 @@
 import Modal from './UI/Modal'
 
 import './Login.css'
-import { postUserData } from '../services/productServices'
 import { signinSchema } from '../validation/signinValidate'
 
-import { useState } from 'react'
 import { useFormik } from 'formik'
-import { useEffect } from 'react'
 
-const Signin = ({ hideLoginHandler, userData, setUserData, setShowSignin, setShowLogin }) => {
-  const [newUser, setNewUser] = useState({})
-
+const Signin = ({ hideLoginHandler, setShowSignin, setShowLogin, setNewUserForSignin }) => {
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -20,27 +15,10 @@ const Signin = ({ hideLoginHandler, userData, setUserData, setShowSignin, setSho
     },
     validationSchema: signinSchema,
     onSubmit: (values) => {
-      setNewUser(values)
+      setNewUserForSignin(values)
+      console.log(values)
     },
   })
-
-  useEffect(() => {
-    const signinSubmitHandler = () => {
-      const exist = userData.find((item) => item.username === newUser.username || +item.mobile === newUser.mobile || (item.email !== '' && item.email === newUser.email))
-      if (exist) {
-        if (exist.username === newUser.username) {
-          alert('نام کاربری وارد شده قبلا ثبت شده است')
-        } else if (+exist.mobile === newUser.mobile) {
-          alert('موبایل وارد شده قبلا ثبت شده است')
-        } else if (exist.email === newUser.email) {
-          alert('ایمیل وارد شده قبلا ثبت شده است')
-        }
-      } else {
-        console.log('شما ثبت نام شدید')
-      }
-    }
-    signinSubmitHandler()
-  }, [newUser])
 
   return (
     <Modal hideLoginHandler={hideLoginHandler}>

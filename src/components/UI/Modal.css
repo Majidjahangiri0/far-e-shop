@@ -11,8 +11,8 @@
 .modall {
   position: fixed;
   top: 20vh;
-  left: 30%;
-  width: 40%;
+  left: 20%;
+  width: 60%;
   background-color: white;
   padding: 1rem;
   border-radius: 14px;
@@ -23,20 +23,20 @@
 
 @media (min-width: 768px) {
   .modall {
-    width: 30%;
-    left: 35%;
+    width: 50%;
+    left: 25%;
   }
 }
 @media (min-width: 992px) {
   .modall {
-    width: 25%;
-    left: 37.5%;
+    width: 30%;
+    left: 35%;
   }
 }
 @media (max-width: 530px) {
   .modall {
-    width: 50%;
-    left: 25%;
+    width: 94%;
+    left: 3%;
   }
 }
 

@@ -21,7 +21,7 @@ const Slider = () => {
                       </h1>
                       <p>جنس عالی و درجه یک و کیفیت دوخت بالا</p>
                       <Link to={'/men-shirt'}>
-                      <button className="slider-btn">! همین حالا بخرید</button>
+                        <button className="slider-btn">! همین حالا بخرید</button>
                       </Link>
                     </div>
                   </div>

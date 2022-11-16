@@ -2,41 +2,19 @@ import Modal from './UI/Modal'
 import './Login.css'
 import { loginSchema } from '../validation/loginValidate'
 
-import { useState } from 'react'
 import { useFormik } from 'formik'
-import { useEffect } from 'react'
 
-const Login = ({ hideLoginHandler, userData, setShowSignin, setShowLogin }) => {
-  const [user, setUser] = useState({})
-
-  // const loginInputHandler = (e) => {
-  //   setUser({ ...user, [e.target.name]: e.target.value })
-  // }
-
+const Login = ({ hideLoginHandler, setShowSignin, setShowLogin, setUserForLogin }) => {
   const formik = useFormik({
     initialValues: {
-      username: '',
+      username: '', 
       password: '',
     },
     validationSchema: loginSchema,
-    onSubmit: (values) => {
-      setUser(values)
+    onSubmit: (userInput) => {
+      setUserForLogin(userInput)
     },
   })
-
-  useEffect(() => {
-    const loginSubmitHandler = () => {
-      const exist = userData.find((item) => item.username === user.username)
-
-      if (exist && exist.password === user.password) {
-        console.log(exist)
-        console.log('کاربر وارد شد')
-      } else {
-        console.log('این نام کاربری قبلا ثبت نشده است')
-      }
-    }
-    loginSubmitHandler()
-  }, [user])
 
   return (
     <Modal hideLoginHandler={hideLoginHandler}>

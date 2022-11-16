@@ -8,6 +8,8 @@ import { productContext } from './context/productContext'
 import { Home, Header, Footer, ToTop, Login, Signin, Checkout, Preloader, ProductShow, ShopServices, Subscribe, ProductArea } from './components'
 import CustomizeProductArea from './components/CustomizeProductArea'
 
+// مشکل: وقتی از هوم به صفحه ی دیگری میروم اسکرول خورده
+
 function App() {
   const [showLogin, setShowLogin] = useState(false)
   const [showSignin, setShowSignin] = useState(false)
@@ -24,6 +26,8 @@ function App() {
   const [cartItems, setCartItems] = useState([])
   const [query, setQuery] = useState({ text: '' })
   const [cartForCheckout, setCartForCheckout] = useState({})
+  const [userForLogin, setUserForLogin] = useState({})
+  const [newUserForSignin, setNewUserForSignin] = useState({})
 
   useEffect(() => {
     const fetchData = async () => {
@@ -75,6 +79,45 @@ function App() {
     setShowSignin(false)
   }
 
+  // login useEffect
+  useEffect(() => {
+    const loginSubmitHandler = () => {
+      const exist = userData.find((item) => item.username === userForLogin.username)
+
+      if (exist && exist.password === userForLogin.password) {
+        console.log(exist)
+        console.log('کاربر وارد شد')
+      } else if (exist && exist.password !== userForLogin.password) {
+        console.log('رمز عبور صحیح نمیباشد')
+      } else if (userForLogin.username !== '' && !exist) {
+        console.log('نام کاربری وارد شده صحیح نمیباشد')
+        // مشکل: در حال ساخت اجرا میشه
+      }
+    }
+    loginSubmitHandler()
+  }, [userForLogin])
+
+  // signin useEffect
+  useEffect(() => {
+    const signinSubmitHandler = () => {
+      const exist = userData.find((item) => item.username === newUserForSignin.username || +item.mobile === newUserForSignin.mobile || (item.email !== '' && item.email === newUserForSignin.email))
+
+      if (exist) {
+        if (exist.username === newUserForSignin.username) {
+          alert('نام کاربری وارد شده قبلا ثبت شده است')
+        } else if (+exist.mobile === newUserForSignin.mobile) {
+          alert('موبایل وارد شده قبلا ثبت شده است')
+        } else if (exist.email === newUserForSignin.email) {
+          alert('ایمیل وارد شده قبلا ثبت شده است')
+        }
+      } else {
+        console.log('شما ثبت نام شدید')
+        // مشکل: در حال ساخت اجرا میشه
+      }
+    }
+    signinSubmitHandler()
+  }, [newUserForSignin])
+
   const menShirt = products.filter((product) => product.group === '5')
   const tShirts = products.filter((product) => product.group === '1')
   const womenBags = women.filter((product) => product.group === '6')
@@ -106,8 +149,8 @@ function App() {
       }}
     >
       <div className="App">
-        {showLogin && <Login hideLoginHandler={hideLoginHandler} userData={userData} setShowSignin={setShowSignin} setShowLogin={setShowLogin} />}
-        {showSignin && <Signin hideLoginHandler={hideLoginHandler} userData={userData} setUserData={setUserData} setShowSignin={setShowSignin} setShowLogin={setShowLogin} />}
+        {showLogin && <Login hideLoginHandler={hideLoginHandler} setShowSignin={setShowSignin} setShowLogin={setShowLogin} setUserForLogin={setUserForLogin} />}
+        {showSignin && <Signin hideLoginHandler={hideLoginHandler} setShowSignin={setShowSignin} setShowLogin={setShowLogin} setNewUserForSignin={setNewUserForSignin} />}
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />

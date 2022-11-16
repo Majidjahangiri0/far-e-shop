@@ -9,22 +9,20 @@ import { getAllSubscribers, postSubscriber } from '../services/productServices'
 import { useFormik } from 'formik'
 
 const Subscribe = () => {
-  const [newEmail, setNewEmail] = useState('')
-  const [subscribers, setSubscribers] = useState([])
+  // const [newEmail, setNewEmail] = useState('')
+  // const [subscribers, setSubscribers] = useState([])
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const { data: subscribers } = await getAllSubscribers()
-        setSubscribers(subscribers)
-      } catch (err) {
-        console.log(err.message)
-      }
-    }
-    fetchData()
-  }, [])
-
-  console.log(subscribers)
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const { data: subscribers } = await getAllSubscribers()
+  //       setSubscribers(subscribers)
+  //     } catch (err) {
+  //       console.log(err.message)
+  //     }
+  //   }
+  //   fetchData()
+  // }, [])
 
   const subSchema = Yup.object().shape({
     email: Yup.string().email('آدرس ایمیل وارد شده معتبر نیست').required('ایمیل خود را وارد کنید'),
@@ -35,21 +33,8 @@ const Subscribe = () => {
       email: '',
     },
     validationSchema: subSchema,
-    onSubmit: () => {
-      const postData = async (e) => {
-        if (subscribers.length > 0) {
-          alert('ایمیل شما قبلا عضو شده است')
-        } else {
-          try {
-            const { status, data } = await postSubscriber(newEmail)
-            if (status === 201) alert('ایمیل شما با موفقیت ثبت شد')
-            setNewEmail('')
-          } catch (err) {
-            console.log(err.message)
-          }
-        }
-      }
-      postData()
+    onSubmit: (value) => {
+      console.log(value)
     },
   })
 
