@@ -2,12 +2,22 @@ import './ProductShow.css'
 import './Header.css'
 import { useGlobalContext } from '../context/productContext'
 
+import { useSelector, useDispatch } from 'react-redux'
+
 import { useParams } from 'react-router-dom'
+import { useEffect } from 'react'
 
 // مشکل: صفحه رو رفرش که میکنم نابود میشه
 
 const ProductShow = () => {
   const { products, addToBasket, selectedSize, chooseSize } = useGlobalContext()
+
+  const cart = useSelector((store) => store)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    console.log(cart)
+  }, [cart])
 
   const { productId } = useParams()
   const product = products[productId]
@@ -39,7 +49,8 @@ const ProductShow = () => {
                 <p>{product.price}</p>
               </div>
               <div className="product-btn">
-                <button onClick={() => addToBasket(product, selectedSize)}>افزودن به سبد خرید</button>
+                {/* <button onClick={() => addToBasket(product, selectedSize)}>افزودن به سبد خرید</button> */}
+                <button onClick={() => dispatch({ type: 'ADD', payload: product, size: selectedSize })}>افزودن به سبد خرید</button>
               </div>
             </div>
           </div>

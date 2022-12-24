@@ -23,7 +23,6 @@ function App() {
   const [women, setWomen] = useState([])
 
   const [selectedSize, setSelectedSize] = useState('')
-  const [cartItems, setCartItems] = useState([])
   const [query, setQuery] = useState({ text: '' })
   const [cartForCheckout, setCartForCheckout] = useState({})
   const [userForLogin, setUserForLogin] = useState({})
@@ -52,18 +51,6 @@ function App() {
     fetchData()
   }, [])
 
-  const addToBasket = (item, slcSize) => {
-    if (slcSize === '') {
-      alert('سایز را انتخاب کنید')
-    } else {
-      const exist = cartItems.find((element) => element.id === item.id && element.selectedSize === slcSize)
-      if (exist) {
-        setCartItems((prev) => prev.map((element) => (element.id === item.id && element.selectedSize === slcSize ? { ...exist, qty: exist.qty + 1 } : element)))
-      } else {
-        setCartItems([...cartItems, { ...item, qty: 1, selectedSize: slcSize }])
-      }
-    }
-  }
 
   const searchProduct = _.debounce((e) => {
     setQuery({ ...query, text: e.target.value })
@@ -138,10 +125,7 @@ function App() {
         setGroups,
         selectedSize,
         setSelectedSize,
-        cartItems,
-        setCartItems,
         query,
-        addToBasket,
         searchProduct,
         chooseSize,
         cartForCheckout,

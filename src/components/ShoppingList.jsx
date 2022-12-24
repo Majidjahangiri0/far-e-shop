@@ -1,26 +1,11 @@
 import { Link } from 'react-router-dom'
 
-const ShoppingList = ({ setShowCart, cartItems, setCartItems, numberOfItemInCart, onCartBtn, totalAmount }) => {
-  const removeFromBasket = (item, slcSize) => {
-    const itemIndex = cartItems.findIndex((element) => element.id === item.id && element.selectedSize === slcSize)
-    if (cartItems[itemIndex].qty === 1) {
-      setCartItems((prev) => {
-        const newState = [...prev]
-        newState.splice(itemIndex, 1)
-        return newState
-      })
-    } else {
-      setCartItems((prev) => {
-        const newState = [...prev]
-        const updateItem = { ...newState[itemIndex] }
-        --updateItem.qty
-        newState[itemIndex] = updateItem
-        return newState
-      })
-    }
-  }
+import { useDispatch } from 'react-redux'
 
-  return (
+const ShoppingList = ({ setShowCart, cartItems, numberOfItemInCart, onCartBtn, totalAmount }) => {
+  const dispatch = useDispatch()
+
+ return (
     <>
       <div className="cart-backdrop" onClick={() => setShowCart(false)}></div>
       <div className="shopping-item ">
@@ -29,19 +14,33 @@ const ShoppingList = ({ setShowCart, cartItems, setCartItems, numberOfItemInCart
           <span>{numberOfItemInCart} کالا</span>
         </div>
         <ul className="shopping-list">
-          {cartItems.length > 0 ? (
+          {cartItems ? (
             cartItems.map((item, idx) => (
               <li key={idx}>
                 <div className="cart-img">
                   <img src={item.image} alt={item.title} />
                 </div>
                 <h4>{item.title}</h4>
-                <p className="qty">
-                  {item.qty} عدد - <span>{item.price} تومان</span>
-                </p>
+                <div style={{ width: '100px', display: 'flex', alignItems: 'center', justifyContent: 'space-around' }}>
+                  <button
+                    style={{ width: '20px', height: '20px', backgroundColor: 'yellow', border: 'none', textAlign: 'center', fontSize: '13px' }}
+                    onClick={() => dispatch({ type: 'INCREASE', payload: item, size: item.selectedSize })}
+                  >
+                    <i className="fa fa-plus" />
+                  </button>
+                  <p className="qty">{item.qty} عدد</p>
+                  <button
+                    style={{ width: '20px', height: '20px', backgroundColor: 'yellow', border: 'none', textAlign: 'center', fontSize: '13px' }}
+                    onClick={() => dispatch({ type: 'DECREASE', payload: item, size: item.selectedSize })}
+                    disabled={item.qty > 1 ? false : true}
+                  >
+                    <i className="fa fa-minus" />
+                  </button>
+                </div>
+                <span>{item.price} تومان</span>
                 <p className="slc-size">{item.selectedSize}</p>
                 <div className="cart-remove-item">
-                  <button className="remove-item" title="حذف از سبد" onClick={() => removeFromBasket(item, item.selectedSize)}>
+                  <button className="remove-item" title="حذف از سبد" onClick={() => dispatch({ type: 'REMOVE', payload: item, size: item.selectedSize })}>
                     <i className="fa fa-times" />
                   </button>
                   حذف از سبد

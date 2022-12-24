@@ -8,24 +8,33 @@ import { FaShoppingBag } from 'react-icons/fa'
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
+import { useSelector } from 'react-redux'
+
 import { useGlobalContext } from '../context/productContext'
 
 const Header = () => {
-  const { setShowLogin, cartItems, setCartItems, searchProduct, cartForCheckout, setCartForCheckout } = useGlobalContext()
+  const { setShowLogin, searchProduct, cartForCheckout, setCartForCheckout } = useGlobalContext()
 
   const [showSearchInput, setShowSearchInput] = useState(false)
   const [showResNavbar, setShowResNavbar] = useState(false)
   const [showCart, setShowCart] = useState(false)
 
+  const cart = useSelector((store) => store)
+
   const location = useLocation()
 
   const cartBtnHandler = () => {
     setShowCart(false)
-    setCartForCheckout({ ...cartForCheckout, total: totalAmount, cartItems: cartItems })
+    setCartForCheckout({ ...cartForCheckout, total: totalAmount, cartItems: cart })
   }
 
-  const numberOfItemInCart = cartItems.reduce((a, b) => a + b.qty, 0)
-  const totalAmount = cartItems.reduce((a, c) => a + c.price * c.qty, 0)
+  if (cart) {
+    var numberOfItemInCart = cart.reduce((a, b) => a + b.qty, 0)
+    var totalAmount = cart.reduce((a, c) => a + c.price * c.qty, 0)
+  } else {
+    var numberOfItemInCart = 0
+    var totalAmount = 0
+  }
 
   return (
     <header className="header shop">
@@ -80,14 +89,7 @@ const Header = () => {
                 <span className="total-count">{numberOfItemInCart}</span>
               </div>
               {showCart && (
-                <ShoppingList
-                  setShowCart={setShowCart}
-                  cartItems={cartItems}
-                  setCartItems={setCartItems}
-                  numberOfItemInCart={numberOfItemInCart}
-                  onCartBtn={cartBtnHandler}
-                  totalAmount={totalAmount}
-                />
+                <ShoppingList setShowCart={setShowCart} cartItems={cart}  numberOfItemInCart={numberOfItemInCart} onCartBtn={cartBtnHandler} totalAmount={totalAmount} />
               )}
             </div>
           </div>
