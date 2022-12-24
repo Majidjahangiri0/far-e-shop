@@ -1,12 +1,4 @@
 import './ProductArea.css'
-import p2 from '../assets/p2.jpg'
-import p4 from '../assets/p4.jpg'
-import p6 from '../assets/p6.jpg'
-import p8 from '../assets/p8.jpg'
-import p10 from '../assets/p10.jpg'
-import p12 from '../assets/p12.jpg'
-import p14 from '../assets/p14.jpg'
-import p16 from '../assets/p16.jpg'
 
 import Aos from 'aos'
 import 'aos/dist/aos.css'

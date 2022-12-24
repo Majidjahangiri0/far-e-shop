@@ -2,7 +2,7 @@ import './Home.css'
 
 import { useState } from 'react'
 
-import { Slider, SmallBanner, ProductArea, OrangeSection, ShopHome } from '../components'
+import { Slider, SmallBanner, ProductArea, OrangeSection, ShopHome, ShopServices, Subscribe } from '../components'
 import { useGlobalContext } from '../context/productContext'
 
 const Home = () => {
@@ -68,6 +68,8 @@ const Home = () => {
         <>
           <OrangeSection />
           <ShopHome />
+          <ShopServices />
+          <Subscribe />
         </>
       )}
     </>

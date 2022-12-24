@@ -51,7 +51,6 @@ function App() {
     fetchData()
   }, [])
 
-
   const searchProduct = _.debounce((e) => {
     setQuery({ ...query, text: e.target.value })
     setProductsForArea(productsForSearch.filter((product) => product.title.toLowerCase().includes(e.target.value.toLowerCase())))
@@ -145,8 +144,6 @@ function App() {
           <Route path="/t-shirts" element={<CustomizeProductArea title="تیشرت های تابستانه" products={tShirts} />} />
           <Route path="/women-collection" element={<CustomizeProductArea title="کالکشن زنانه" products={womenCollection} />} />
         </Routes>
-        <ShopServices />
-        <Subscribe />
         <Footer />
         <ToTop />
       </div>
