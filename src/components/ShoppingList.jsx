@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom'
 
 import { useDispatch } from 'react-redux'
+import { useEffect } from 'react'
 
 const ShoppingList = ({ setShowCart, cartItems, numberOfItemInCart, onCartBtn, totalAmount }) => {
   const dispatch = useDispatch()
 
- return (
+  return (
     <>
       <div className="cart-backdrop" onClick={() => setShowCart(false)}></div>
       <div className="shopping-item ">

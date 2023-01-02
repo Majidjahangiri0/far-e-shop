@@ -14,7 +14,7 @@ const SmallBanner = () => {
     <section className="small-banner">
       <div className="container-fluid">
         <div className="row">
-          <div className="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="500">
+          <div className="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="100">
             <div className="single-banner">
               <img src={miniBanner1} alt="" />
               <div className="content">
@@ -25,12 +25,12 @@ const SmallBanner = () => {
                   سفر تابستانه مردانه
                 </h3>
                 <Link to={'/t-shirts'}>
-                <button>حالا ببین</button>
+                  <button>حالا ببین</button>
                 </Link>
               </div>
             </div>
           </div>
-          <div className="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="600">
+          <div className="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="200">
             <div className="single-banner">
               <img src={miniBanner2} alt="" />
               <div className="content">
@@ -41,12 +41,12 @@ const SmallBanner = () => {
                   زنانه
                 </h3>
                 <Link to={'/women-bags'}>
-                 <button>حالا ببین</button>
+                  <button>حالا ببین</button>
                 </Link>
               </div>
             </div>
           </div>
-          <div className="col-lg-4 col-12" data-aos="fade-up" data-aos-delay="700">
+          <div className="col-lg-4 col-12" data-aos="fade-up" data-aos-delay="300">
             <div className="single-banner">
               <img src={miniBanner3} alt="" />
               <div className="content">
@@ -57,7 +57,7 @@ const SmallBanner = () => {
                   تا 40 درصد تخفیف
                 </h3>
                 <Link to={'/women-collection'}>
-                <button>حالا ببین</button>
+                  <button>حالا ببین</button>
                 </Link>
               </div>
             </div>

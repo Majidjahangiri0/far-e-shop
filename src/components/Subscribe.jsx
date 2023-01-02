@@ -40,7 +40,7 @@ const Subscribe = () => {
 
   Aos.init()
   return (
-    <section className="subscribe" data-aos="fade-up" data-aos-delay="600">
+    <section className="subscribe" data-aos="fade-up" data-aos-delay="200">
       <div className="container">
         <div className="row">
           <div className="col-12">

@@ -66,7 +66,7 @@ const Home = () => {
       )}
       {query.text.length === 0 && (
         <>
-          <OrangeSection />
+          <OrangeSection products={products} />
           <ShopHome />
           <ShopServices />
           <Subscribe />

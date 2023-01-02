@@ -10,14 +10,14 @@ const ProductArea = ({ products, setProducts, sortProducts, sort, groups, showPr
   return (
     <section className="product-area">
       <div className="container">
-        <div className="row" data-aos="fade-up" data-aos-delay="600">
+        <div className="row" data-aos="fade-up" data-aos-delay="300">
           <div className="col-12">
             <div className="section-title">
               <h2>محصولات ترند</h2>
             </div>
           </div>
         </div>
-        <div className="row" data-aos="fade-up" data-aos-delay="700">
+        <div className="row" data-aos="fade-up" data-aos-delay="400">
           <div className="col-12">
             {query.text.length === 0 && <Filter sortProducts={sortProducts} sort={sort} groups={groups} showProductsByGroup={showProductsByGroup} showByGroup={showByGroup} />}
             <div className="content mx-xl-5">

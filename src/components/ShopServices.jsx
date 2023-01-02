@@ -6,7 +6,7 @@ import 'aos/dist/aos.css'
 const ShopServices = () => {
   Aos.init()
   return (
-    <section className="shop-services" data-aos="fade-up" data-aos-delay="600">
+    <section className="shop-services" data-aos="fade-up" data-aos-delay="100">
       <div className="container">
         <div className="row">
           <div className="col-lg-3 col-md-6 col-12">
@@ -38,7 +38,7 @@ const ShopServices = () => {
           </div>
           <div className="col-lg-3 col-md-6 col-12">
             <div className="single-service">
-              <i className="fa fa-money-bill-wave"></i>
+              <i className="fa fa-money"></i>
               <div className="service-content">
                 <h4>ارسال رایگان</h4>
                 <p>برای سفارش های بالای 300 هزار تومان</p>

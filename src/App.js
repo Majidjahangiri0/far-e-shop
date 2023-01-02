@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useLocation } from 'react-router-dom'
 import _ from 'lodash'
+
+import { useDispatch, useSelector } from 'react-redux'
 
 import { getAllProducts, getAllGroups, getAllUsers, getWomen } from './services/productServices'
 import { productContext } from './context/productContext'
 
-import { Home, Header, Footer, ToTop, Login, Signin, Checkout, Preloader, ProductShow, ShopServices, Subscribe, ProductArea } from './components'
+import { Home, Header, Footer, ToTop, Login, Signin, Checkout, Preloader, ProductShow } from './components'
 import CustomizeProductArea from './components/CustomizeProductArea'
 
-// مشکل: وقتی از هوم به صفحه ی دیگری میروم اسکرول خورده
+import { productsData, groupsData, womenData } from './data/data'
 
 function App() {
   const [showLogin, setShowLogin] = useState(false)
@@ -28,28 +30,61 @@ function App() {
   const [userForLogin, setUserForLogin] = useState({})
   const [newUserForSignin, setNewUserForSignin] = useState({})
 
+  const cart = useSelector((store) => store)
+  const dispatch = useDispatch()
+
+  // مشکل: وقتی از هوم به صفحه ی دیگری میروم اسکرول خورده=> با کد زیر اوکی شد ولی عایا اصولی؟
+  const location = useLocation()
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true)
-        const { data: productsData } = await getAllProducts()
-        const { data: groups } = await getAllGroups()
-        const { data: usersData } = await getAllUsers()
-        const { data: women } = await getWomen()
-        setProducts(productsData)
-        setProductsForArea(productsData)
-        setProductsForSearch(productsData)
-        setWomen(women)
-        setGroups(groups)
-        setUserData(usersData)
-        setLoading(false)
-      } catch (err) {
-        console.log(err.message)
-        setLoading(false)
-      }
+    window.scroll({ top: 0 })
+  }, [location.pathname])
+
+  //مشکل:لوکال داره کار میکنه ولی عایا اصولی؟
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem('cart'))
+    if (data) {
+      dispatch({ type: 'GET', payload: data })
     }
-    fetchData()
   }, [])
+
+  useEffect(() => {
+    if (cart) {
+      localStorage.setItem('cart', JSON.stringify(cart))
+    }
+  }, [cart])
+
+  useEffect(() => {
+    setLoading(true)
+    setProducts(productsData)
+    setProductsForArea(productsData)
+    setProductsForSearch(productsData)
+    setWomen(womenData)
+    setGroups(groupsData)
+    setLoading(false)
+  }, [])
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       setLoading(true)
+  //       const { data: productsData } = await getAllProducts()
+  //       const { data: groups } = await getAllGroups()
+  //       const { data: usersData } = await getAllUsers()
+  //       const { data: women } = await getWomen()
+  //       setProducts(productsData)
+  //       setProductsForArea(productsData)
+  //       setProductsForSearch(productsData)
+  //       setWomen(women)
+  //       setGroups(groups)
+  //       setUserData(usersData)
+  //       setLoading(false)
+  //     } catch (err) {
+  //       console.log(err.message)
+  //       setLoading(false)
+  //     }
+  //   }
+  //   fetchData()
+  // }, [])
 
   const searchProduct = _.debounce((e) => {
     setQuery({ ...query, text: e.target.value })
@@ -104,7 +139,7 @@ function App() {
     signinSubmitHandler()
   }, [newUserForSignin])
 
-  const menShirt = products.filter((product) => product.group === '5')
+  const menShirt = products.filter((product) => product.group === '3')
   const tShirts = products.filter((product) => product.group === '1')
   const womenBags = women.filter((product) => product.group === '6')
   const womenCollection = women.filter((product) => product.group === '7')

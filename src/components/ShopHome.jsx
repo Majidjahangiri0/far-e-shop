@@ -18,7 +18,7 @@ const ShopHome = () => {
     <section className="shop-home">
       <div className="container">
         <div className="row">
-          <div className="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="600">
+          <div className="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="100">
             <div className="shop-home-title">
               <h1>پر فروش</h1>
             </div>
@@ -80,7 +80,7 @@ const ShopHome = () => {
               </div>
             </div>
           </div>
-          <div className="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="700">
+          <div className="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="200">
             <div className="shop-home-title">
               <h1>بیشترین بازدید</h1>
             </div>
@@ -142,7 +142,7 @@ const ShopHome = () => {
               </div>
             </div>
           </div>
-          <div className="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="800">
+          <div className="col-lg-4 col-md-6 col-12" data-aos="fade-up" data-aos-delay="300">
             <div className="shop-home-title">
               <h1>جدیدترین</h1>
             </div>

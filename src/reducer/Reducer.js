@@ -23,6 +23,9 @@ export const Reducer = (cart = [], action) => {
     case 'DECREASE':
       const tempcartD = cart.map((item) => (item.id === action.payload.id && item.selectedSize === action.size && item.qty > 1 ? { ...item, qty: item.qty - 1 } : item))
       return tempcartD
+    case 'GET':
+      const tempcartG = [...action.payload]
+      return tempcartG
     default:
       break
   }
