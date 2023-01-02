@@ -1,16 +1,8 @@
 {
   "files": {
-    "main.css": "/far-e-shop/static/css/main.8de17517.css",
-    "main.js": "/far-e-shop/static/js/main.f59f8a5f.js",
+    "main.css": "/far-e-shop/static/css/main.4a0fc525.css",
+    "main.js": "/far-e-shop/static/js/main.c2faf015.js",
     "static/media/slider-image.jpg": "/far-e-shop/static/media/slider-image.a74f7333148866c63576.jpg",
-    "static/media/p14.jpg": "/far-e-shop/static/media/p14.415a2c5d9c5aaf2c04e9.jpg",
-    "static/media/p8.jpg": "/far-e-shop/static/media/p8.087c91bcdc4b222db766.jpg",
-    "static/media/p10.jpg": "/far-e-shop/static/media/p10.9dac99a03b5fcd103256.jpg",
-    "static/media/p6.jpg": "/far-e-shop/static/media/p6.8fcc7040d458482a32bf.jpg",
-    "static/media/p2.jpg": "/far-e-shop/static/media/p2.7432c92009c542240036.jpg",
-    "static/media/p12.jpg": "/far-e-shop/static/media/p12.493830b6ca265f94466a.jpg",
-    "static/media/p4.jpg": "/far-e-shop/static/media/p4.980ead93b1c75f1acb59.jpg",
-    "static/media/p16.jpg": "/far-e-shop/static/media/p16.84dae5453dd29dd36c53.jpg",
     "static/media/mini-banner3.jpg": "/far-e-shop/static/media/mini-banner3.72610c989a618c4cae58.jpg",
     "static/media/mini-banner2.jpg": "/far-e-shop/static/media/mini-banner2.440d737ea0fa96513d79.jpg",
     "static/media/shop-list9.jpg": "/far-e-shop/static/media/shop-list9.f0ba27a058bbf68202e6.jpg",
@@ -23,12 +15,16 @@
     "static/media/shop-list5.jpg": "/far-e-shop/static/media/shop-list5.71f2ad0d945ead7b2cf5.jpg",
     "static/media/shop-list4.jpg": "/far-e-shop/static/media/shop-list4.140919eed4bfb9905d30.jpg",
     "static/media/shop-list1.jpg": "/far-e-shop/static/media/shop-list1.19dd645f0b291b982f38.jpg",
+    "static/media/slick.svg": "/far-e-shop/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/far-e-shop/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/far-e-shop/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/far-e-shop/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/far-e-shop/index.html",
-    "main.8de17517.css.map": "/far-e-shop/static/css/main.8de17517.css.map",
-    "main.f59f8a5f.js.map": "/far-e-shop/static/js/main.f59f8a5f.js.map"
+    "main.4a0fc525.css.map": "/far-e-shop/static/css/main.4a0fc525.css.map",
+    "main.c2faf015.js.map": "/far-e-shop/static/js/main.c2faf015.js.map"
   },
   "entrypoints": [
-    "static/css/main.8de17517.css",
-    "static/js/main.f59f8a5f.js"
+    "static/css/main.4a0fc525.css",
+    "static/js/main.c2faf015.js"
   ]
 }
