@@ -35,6 +35,8 @@ const OrangeSection = ({ products }) => {
       {
         breakpoint: 480,
         settings: {
+          dots: false,
+          speed: 500,
           slidesToShow: 1,
           slidesToScroll: 1,
         },
@@ -61,7 +63,7 @@ const OrangeSection = ({ products }) => {
           ))}
         </Slider>
       </div>
-    </section> 
+    </section>
   )
 }
 
